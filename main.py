@@ -3,6 +3,10 @@ import joblib
 import numpy as np
 import pandas as pd
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
+
+
+
 
 class FraudInput(BaseModel):
     transaction_hour: int
@@ -21,7 +25,15 @@ def Load_model(path) :
 
 app = FastAPI()
 
+origins = ["*"]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 
