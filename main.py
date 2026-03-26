@@ -25,7 +25,7 @@ def Load_model(path) :
 
 app = FastAPI()
 
-origins = ["*"]
+origins = ["https://fraud-frontend-henna.vercel.app"]
 
 app.add_middleware(
     CORSMiddleware,
